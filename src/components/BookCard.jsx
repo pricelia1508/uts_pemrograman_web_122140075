@@ -1,4 +1,11 @@
+import { useState } from 'react';
+import Dialogue from './Dialogue';
+
 export default function BookCard({ book }) {
+    const [open, setOpen] = useState(false);
+    const handleClick = () => {
+        setOpen(!open);
+    };
     return (
         <div>
             <img
@@ -22,14 +29,16 @@ export default function BookCard({ book }) {
                         </span>
                     </div>
                     <div className="mt-2">
-                        <a
-                            href=""
+                        <button
+                            onClick={handleClick}
                             className="flex justify-center w-fit px-2 py-1 text-base leading-6 text-white transition duration-150 ease-in-out bg-blue-500 border border-transparent rounded-md hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue  ">
                             Pinjam Disini
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>
+
+            <Dialogue open={open} setOpen={setOpen} book={book} />
         </div>
     );
 }
