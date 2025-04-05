@@ -20,7 +20,7 @@ export default function BookCard({ book }) {
                         {book.title}
                     </h4>
                     <div className="mt-1">
-                        Rp. {book.price * 1000}
+                        Rp. {new Intl.NumberFormat('id-ID').format(book.price * 1000)}
                         <span className="text-gray-600 text-sm"> /pcs</span>
                     </div>
                     <div className="mt-1">
@@ -28,10 +28,15 @@ export default function BookCard({ book }) {
                             Karya Penulis {book.author}
                         </span>
                     </div>
-                    <div className="mt-2">
+                    <div className="mt-2 flex gap-2">
+                        <a
+                            href={`/book/${book.id}`}
+                            className="flex justify-center cursor-pointer w-fit px-2 py-1 text-sm leading-6 text-white transition duration-150 ease-in-out bg-gray-500 border border-transparent rounded-md hover:bg-gray-600 focus:outline-none focus:shadow-outline-blue  ">
+                            Lihat Detail
+                        </a>
                         <button
                             onClick={handleClick}
-                            className="flex justify-center w-fit px-2 py-1 text-base leading-6 text-white transition duration-150 ease-in-out bg-blue-500 border border-transparent rounded-md hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue  ">
+                            className="flex justify-center cursor-pointer w-fit px-2 py-1 text-sm leading-6 text-white transition duration-150 ease-in-out bg-blue-500 border border-transparent rounded-md hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue  ">
                             Pinjam Disini
                         </button>
                     </div>
